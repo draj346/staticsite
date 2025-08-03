@@ -1,0 +1,3266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrandBuzz - Business Solutions</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #FF7A00;
+            --secondary-color: #fdf7e43a;
+            --text-light: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.8);
+            --mobile-menu-bg: #faeed1;
+            --section-bg: #fcede7;
+        }
+
+        body {
+            background-color: var(--secondary-color);
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #181a1c;
+            position: relative;
+            display: inline-block;
+        }
+
+        @media (min-width: 768px) {
+            h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (min-width: 992px) {
+            h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        .highlight {
+            color: var(--primary-color);
+        }
+
+        /* Custom Navbar */
+        .header .navbar {
+            background-color: transparent !important;
+            box-shadow: none !important;
+            padding: 15px 0;
+            z-index: 1000;
+            min-height: 80px;
+        }
+
+        .header .navbar.scrolled {
+             background: #ffb4001a !important;
+        }
+
+        .header .navbar-brand {
+            font-weight: 700;
+            font-size: 28px;
+            color: #333;
+            order: 2;
+            margin-left: 15px;
+        }
+
+        .header .navbar-brand img {
+            height: 41px;
+        }
+
+        /* Navigation links styling */
+        .header .nav-link {
+            font-weight: 500;
+            color: #181a1c;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 36px;
+            background: #fff;
+            border-radius: 30px;
+            padding: 0 15px;
+            margin: 0 3px;
+        }
+
+        @media (min-width: 992px) {
+            .header .nav-link {
+                font-size: 0.8em;
+                padding-left: 18px;
+                padding-right: 18px;
+                --bs-navbar-nav-link-padding-x: 10px;
+                --bs-navbar-nav-link-padding-y: 10px;
+            }
+        }
+
+        .header .nav-link:hover,
+        .header .nav-link.active {
+            /* background: rgba(255, 122, 0, 0.1); */
+            color: var(--primary-color) !important;
+        }
+
+        .header .nav-link.active {
+            /* background: #fff; */
+            color: var(--primary-color) !important;
+        }
+
+        .header .right-menu {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+        }
+
+        .header .login-btn {
+            background-color: var(--primary-color);
+            color: white !important;
+            border-radius: 30px;
+            padding: 0 15px;
+            transition: all 0.3s;
+        }
+
+        .header .login-btn:hover {
+            background-color: #e06d00;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 122, 0, 0.3);
+        }
+
+        .header .language-dropdown .dropdown-toggle {
+            background: #fff;
+            border-radius: 30px;
+            padding: 0 15px;
+            display: flex;
+            align-items: center;
+            height: 36px;
+            color: #333;
+        }
+
+        .header .language-dropdown .dropdown-toggle:hover {
+            background: rgba(255, 122, 0, 0.1);
+            color: var(--primary-color);
+        }
+
+        .header .language-dropdown .dropdown-toggle::after {
+            margin-left: 8px;
+        }
+
+        .header .language-dropdown .dropdown-menu {
+            border-radius: 16px;
+            min-width: 120px;
+        }
+
+        /* Mobile menu button styling - FIXED: Remove border */
+        .header .navbar-toggler {
+            border: none;
+            padding: 0;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            background: transparent;
+            outline: none;
+            box-shadow: none !important;
+            order: 1;
+            /* Hamburger comes first on mobile */
+        }
+
+        /* Custom offcanvas for mobile menu - FIXED: Open from right */
+        .header .offcanvas {
+            max-width: 340px;
+            background-color: var(--mobile-menu-bg);
+            padding: 24px;
+        }
+
+        .header .offcanvas-end {
+            right: 0;
+            left: auto;
+        }
+
+        .header .offcanvas-header {
+            padding: 0;
+            margin-bottom: 24px;
+            justify-content: flex-end;
+        }
+
+        .header .offcanvas-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .header .btn-close-custom {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            background: transparent;
+            border: none;
+            transition: transform 0.3s ease;
+        }
+
+        .header .btn-close-custom:hover {
+            transform: rotate(90deg);
+            color: #e06d00;
+        }
+
+        .header .offcanvas-body {
+            padding: 0;
+        }
+
+        .header .mobile-menu .nav-link {
+            background: transparent;
+            justify-content: flex-start;
+            padding: 12px 0;
+            margin: 0;
+            border-radius: 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            height: auto;
+        }
+
+        .header .mobile-menu .right-menu {
+            background: transparent;
+            flex-direction: row;
+            /* FIXED: Show login and language in row */
+            align-items: center;
+            padding: 0;
+            margin-left: 0;
+            margin-top: 24px;
+            gap: 10px;
+            justify-content: space-between;
+        }
+
+        .header .mobile-menu .login-btn {
+            background-color: var(--primary-color);
+            color: white !important;
+            border-radius: 30px;
+            padding: 8px 24px;
+            display: inline-flex;
+            margin-top: 0;
+        }
+
+        .header .mobile-menu .language-dropdown .dropdown-toggle {
+            background: transparent;
+            padding: 8px 0;
+        }
+
+        .header .mobile-menu .dropdown-menu {
+            background: rgba(255, 255, 255, 0.7);
+            border: none;
+            border-radius: 16px;
+        }
+
+        /* Carousel Section - Fixed Height */
+        .carousel-section {
+            position: relative;
+            overflow: hidden;
+            height: 547px;
+            /* Default desktop height */
+        }
+
+        .carousel-section .carousel-item {
+            height: 547px;
+            /* Default desktop height */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .carousel-section .carousel-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 100%);
+            z-index: 1;
+        }
+
+        .carousel-section .carousel-content {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 100%;
+            z-index: 2;
+            padding: 0 30px;
+        }
+
+        .carousel-section .carousel-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            color: var(--text-light);
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (min-width: 992px) {
+            .carousel-section .carousel-title {
+                font-size: 3.8rem;
+            }
+        }
+
+        .carousel-section .carousel-title span {
+            color: var(--primary-color);
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-section .carousel-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            line-height: 1.8;
+            max-width: 700px;
+            font-weight: 300;
+        }
+
+        /* Decorative Elements */
+        .carousel-section .shape-1 {
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 122, 0, 0.15);
+            border-radius: 50%;
+            z-index: 1;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        .carousel-section .shape-2 {
+            position: absolute;
+            bottom: 15%;
+            left: 5%;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 122, 0, 0.15);
+            border-radius: 50%;
+            z-index: 1;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        .carousel-section .shape-3 {
+            position: absolute;
+            top: 30%;
+            left: 20%;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 122, 0, 0.15);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            z-index: 1;
+            animation: float 12s infinite ease-in-out;
+        }
+
+        .carousel-section .carousel-control-prev,
+        .carousel-section .carousel-control-next {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            margin: 0 30px;
+            opacity: 1;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .carousel-section .carousel-control-prev:hover,
+        .carousel-section .carousel-control-next:hover {
+            background: var(--primary-color);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-section .carousel-control-prev-icon,
+        .carousel-section .carousel-control-next-icon {
+            filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
+            width: 2rem;
+            height: 2rem;
+        }
+
+        /* Circular Indicators */
+        .carousel-section .carousel-indicators {
+            bottom: 40px;
+        }
+
+        .carousel-section .carousel-indicators [data-bs-target] {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.4);
+            border: 2px solid transparent;
+            margin: 0 8px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-section .carousel-indicators [data-bs-target]:hover {
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        .carousel-section .carousel-indicators .active {
+            background-color: var(--primary-color);
+            border: 2px solid white;
+            transform: scale(1.3);
+        }
+
+        /* Animation */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* Marquee Banner */
+        .carousel-section .marquee-banner {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 22px;
+            background: var(--primary-color);
+            color: white;
+            z-index: 15;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+        }
+
+        .carousel-section .marquee-content {
+            display: inline-block;
+            white-space: nowrap;
+            padding-left: 100%;
+            animation: marquee 40s linear infinite;
+            font-size: 13px;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .carousel-section .marquee-content span {
+            padding: 0 10px;
+        }
+
+        /* Responsive Adjustments - MOBILE FIRST APPROACH */
+        /* Base styles are for mobile */
+
+        /* Tablet and above */
+        @media (min-width: 576px) {
+
+            .carousel-section,
+            .carousel-section .carousel-item {
+                height: 500px;
+            }
+
+            .carousel-section .carousel-title {
+                font-size: 2rem;
+            }
+
+            .carousel-section .carousel-subtitle {
+                font-size: 1rem;
+                margin-bottom: 30px;
+            }
+
+            .carousel-section .carousel-control-prev,
+            .carousel-section .carousel-control-next {
+                width: 40px;
+                height: 40px;
+                margin: 0 10px;
+            }
+
+            .header .nav-link {
+                font-size: 0.9rem;
+                padding: 0 10px;
+            }
+
+            .carousel-section .carousel-content {
+                padding: 0 20px;
+            }
+
+            .carousel-section .carousel-indicators {
+                bottom: 20px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .header .navbar {
+                min-height: auto;
+            }
+
+            .carousel-section .carousel-title {
+                font-size: 2.3rem;
+            }
+
+            .carousel-section .carousel-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .carousel-section .carousel-control-prev,
+            .carousel-section .carousel-control-next {
+                width: 50px;
+                height: 50px;
+                margin: 0 15px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .header .navbar-brand {
+                order: initial;
+                margin-left: 0;
+            }
+
+            .header .navbar-toggler {
+                display: none;
+                /* Hide hamburger on desktop */
+            }
+
+            .carousel-section .carousel-title {
+                font-size: 2.8rem;
+            }
+
+            .header .navbar-collapse {
+                background: transparent;
+                padding: 0;
+                margin-top: 0;
+                box-shadow: none;
+            }
+
+            .header .right-menu {
+                margin-left: 10px;
+            }
+
+            .header .nav-link {
+                margin: 0 3px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .carousel-section .carousel-title {
+                font-size: 3.2rem;
+            }
+
+            .carousel-section .shape-1,
+            .carousel-section .shape-2,
+            .carousel-section .shape-3 {
+                display: block;
+                /* Show decorative shapes on larger screens */
+            }
+        }
+
+
+        .features-section {
+            padding: 60px 0 36px 0;
+            position: relative;
+            overflow: hidden;
+            background: var(--section-bg);
+        }
+
+        .features-section .features-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .features-section .features-header p {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-section .service-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 74px 25px 30px 25px;
+            text-align: left;
+            height: 100%;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .features-section .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 122, 0, 0.15);
+        }
+
+        /* Special curved design for first card */
+        .features-section .service-card:first-child::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 84px;
+            height: 54px;
+            border-radius: 0 7px 36px 11px;
+            z-index: -1;
+            font-size: 2rem;
+            color: #fff;
+            padding-top: 10px;
+            padding-left: 25px;
+        }
+
+        .yellow::before {
+            background: #f4bf0d;
+        }
+
+        .green::before {
+            background: #05e769;
+        }
+
+        .velvet::before {
+            background: #866fed;
+        }
+
+        .red::before {
+            background: #f33a02;
+        }
+
+        .features-section .shape-1 {
+            position: absolute;
+            top: 10%;
+            right: 5%;
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 122, 0, 0.1);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            z-index: 0;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        .features-section .shape-2 {
+            position: absolute;
+            bottom: 15%;
+            left: 5%;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 122, 0, 0.1);
+            border-radius: 50%;
+            z-index: 0;
+            animation: float 10s infinite ease-in-out;
+        }
+
+
+        .features-section .service-card h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: #181a1c;
+        }
+
+        .features-section .service-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 991px) {
+            .features-section .service-card {
+                margin-bottom: 25px;
+            }
+
+        }
+
+        .about-section {
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-section img {
+            height: auto;
+            width: auto;
+            max-width: 100%;
+        }
+
+        .about-section .img-mask-1,
+        .about-section .img-mask-2 {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .about-section .img-mask-1 {
+            border-top-right-radius: 50px;
+            border-bottom-left-radius: 50px;
+        }
+
+        .about-section .img-mask-2 {
+            border-top-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+
+        .about-section .img-mask-1:hover {
+            transform: translateY(-10px) rotate(2deg);
+        }
+
+        .about-section .img-mask-2:hover {
+            transform: translateY(-10px) rotate(-2deg);
+        }
+
+        .about-section .counter {
+            font-weight: 700;
+            color: #FF7A00;
+            font-size: 3.5rem;
+            display: inline-block;
+            line-height: 1;
+        }
+
+        .about-section .sm-heading {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .about-section .d-flex.align-items-center {
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-section h4.line-height-100 {
+            font-size: 3.5rem;
+            color: #FF7A00;
+            font-weight: 700;
+            margin-left: 5px;
+        }
+
+        .about-section .title-heading {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #FF7A00;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .about-section h2 {
+            margin-bottom: 20px;
+        }
+
+        .about-section p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .about-section .button {
+            background: #FF7A00;
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(255, 122, 0, 0.3);
+        }
+
+        .about-section .button:hover {
+            background: #e06d00;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 122, 0, 0.4);
+        }
+
+
+        .about-section .bubble-1 {
+            position: absolute;
+            top: 15%;
+            right: 10%;
+            width: 140px;
+            height: 140px;
+            background: rgba(255, 122, 0, 0.08);
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        .about-section .bubble-2 {
+            position: absolute;
+            bottom: 20%;
+            left: 8%;
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 122, 0, 0.08);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            z-index: -1;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        .about-section .bubble-3 {
+            position: absolute;
+            top: 35%;
+            right: 55%;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 122, 0, 0.08);
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 12s infinite ease-in-out;
+        }
+
+
+        /* Decorative elements */
+
+
+        /* Responsive adjustments */
+        @media (max-width: 991px) {
+            .about-section .counter {
+                font-size: 2.5rem;
+            }
+
+            .about-section h4.line-height-100 {
+                font-size: 2.5rem;
+            }
+
+            .about-section .img-container {
+                margin-bottom: 40px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .about-section .counter {
+                font-size: 2rem;
+            }
+
+            .about-section h4.line-height-100 {
+                font-size: 2rem;
+            }
+
+            .about-section .sm-heading {
+                font-size: 0.9rem;
+            }
+        }
+
+        .why-section {
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+            background-color: transparent;
+        }
+
+        .why-section h2 {
+            margin-bottom: 30px;
+        }
+
+
+        .why-section p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .why-section .why-img {
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .why-section .why-img:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .why-section .img-overlap {
+            position: relative;
+            top: -50px;
+        }
+
+        /* Bubble background effect */
+        .why-section .bubble-1 {
+            position: absolute;
+            top: 15%;
+            right: 10%;
+            width: 180px;
+            height: 180px;
+            background: rgba(255, 122, 0, 0.08);
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        .why-section .bubble-2 {
+            position: absolute;
+            bottom: 20%;
+            left: 8%;
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 122, 0, 0.08);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            z-index: -1;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        .why-section .bubble-3 {
+            position: absolute;
+            top: 40%;
+            left: 15%;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 122, 0, 0.08);
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 12s infinite ease-in-out;
+        }
+
+        @media (max-width: 768px) {
+            .why-section .img-overlap {
+                top: 0;
+                margin-top: 20px;
+            }
+        }
+
+
+        .steps-section {
+            padding: 60px 0;
+            background-color: var(--section-bg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .steps-section .steps-container {
+            position: relative;
+        }
+
+        .steps-section .steps-content {
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .steps-section .step-item {
+            position: relative;
+            padding-bottom: 30px;
+        }
+
+        .steps-section .step-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .steps-section .step-item:not(:last-child) .step-content::after {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: -30px;
+            width: 2px;
+            height: 100%;
+            background: repeating-linear-gradient(to bottom,
+                    transparent,
+                    transparent 5px,
+                    #866fed 5px,
+                    #866fed 8px);
+            z-index: 1;
+        }
+
+        .steps-section .step-number {
+            position: absolute;
+            left: -50px;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            z-index: 2;
+            box-shadow: 0 4px 8px rgba(255, 122, 0, 0.3);
+        }
+
+        .steps-section .step-content h3 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #181a1c;
+        }
+
+        .steps-section .step-content p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+        .steps-section .steps-img {
+            border-radius: 12px;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .steps-section .steps-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .steps-section .section-heading {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .steps-section .section-heading h2 {
+            margin-bottom: 15px;
+        }
+
+        .steps-section .section-heading p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        /* Decorative elements */
+        .steps-section .steps-section .shape-1 {
+            position: absolute;
+            top: 10%;
+            left: 5%;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 122, 0, 0.1);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .steps-section .steps-section .shape-2 {
+            position: absolute;
+            bottom: 15%;
+            right: 5%;
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 122, 0, 0.1);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            z-index: 0;
+        }
+
+        .steps-section .shape-1 {
+            position: absolute;
+            top: 10%;
+            right: 5%;
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 122, 0, 0.1);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            z-index: 0;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        .steps-section .shape-2 {
+            position: absolute;
+            bottom: 15%;
+            left: 5%;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 122, 0, 0.1);
+            border-radius: 50%;
+            z-index: 0;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 991px) {
+            .steps-section .steps-content {
+                padding-left: 40px;
+            }
+
+            .steps-section .step-number {
+                left: -56px;
+            }
+
+            .steps-section .step-item:not(:last-child) .step-content::after {
+                left: -36px;
+            }
+
+            .steps-section .steps-img {
+                margin-bottom: 30px;
+            }
+
+            .steps-section .steps-container {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .steps-section .steps-img {
+
+                height: 300px;
+            }
+
+            .steps-section .steps-content {
+                padding-left: 35px;
+            }
+
+            .steps-section .step-item {
+                margin-bottom: 30px;
+                padding-bottom: 20px;
+            }
+
+            .steps-section .step-number {
+                left: -42px;
+                width: 35px;
+                height: 35px;
+            }
+
+            .steps-section .step-item:not(:last-child) .step-content::after {
+                left: -25px;
+            }
+
+            .steps-section .step-item::before {
+                left: -35px;
+            }
+
+
+            .steps-section .section-heading p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .steps-section .steps-content {
+                padding-left: 30px;
+            }
+
+            .steps-section .step-number {
+                left: -40px;
+                width: 32px;
+                height: 32px;
+                font-size: 1rem;
+            }
+
+            .steps-section .step-item::before {
+                left: -32px;
+            }
+
+
+
+            .steps-section .step-item:not(:last-child) .step-content::after {
+                top: 30px;
+            }
+        }
+
+        .youtube-section {
+            background: transparent;
+        }
+
+        .youtube-section .bubble-1 {
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            width: 140px;
+            height: 140px;
+            background: rgba(255, 122, 0, 0.08);
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        .youtube-section .bubble-2 {
+            position: absolute;
+            bottom: 20%;
+            left: 5%;
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 122, 0, 0.08);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            z-index: -1;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        .youtube-section .bubble-3 {
+            position: absolute;
+            top: 35%;
+            right: 55%;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 122, 0, 0.08);
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 12s infinite ease-in-out;
+        }
+
+        .youtube-section .service-card {
+            padding: 0;
+            margin-bottom: -10px;
+        }
+
+        .youtube-section .features-section .service-card:hover {
+            transform: none;
+        }
+
+        .contact-section {
+            padding-bottom: 60px;
+        }
+
+        .contact-section .contact-form {
+            background: #fff;
+            border-radius: 16px;
+            padding: 30px 25px 30px 25px;
+            text-align: left;
+            height: 100%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .contact-section .input-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-section .input-group .input-icon-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .contact-section .input-group .input-icon-container .icon-container {
+            position: absolute;
+            left: 15px;
+            top: 26px;
+            transform: translateY(-50%);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .contact-section .input-group .input-icon-container .icon-container.textarea-icon {
+            top: 1rem;
+            transform: none;
+        }
+
+        .contact-section .input-group .input-icon-container .input-icon {
+            color: #ff7a00;
+            font-size: 1.1rem;
+        }
+
+        .contact-section .input-group .input-icon-container input,
+        .contact-section .input-group .input-icon-container textarea {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 3rem;
+            border: 1px solid #e1e5eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-section .input-group .input-icon-container input:focus,
+        .contact-section .input-group .input-icon-container textarea:focus {
+            outline: none;
+            border-bottom-width: 3px;
+            border-bottom-style: solid;
+            border-bottom-color: #ff7a00;
+        }
+
+        .contact-section .input-group .input-icon-container textarea {
+            padding: 1rem;
+            resize: vertical;
+            padding-left: 3.5rem;
+        }
+
+        .contact-section .input-group .input-icon-container textarea.textarea-container .icon-container {
+            top: 20px;
+        }
+
+        .contact-section .btn-primary {
+            background-color: #ff7a00;
+            border-color: #ff7a00;
+        }
+
+        .contact-section .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 122, 0, 0.3);
+        }
+
+        .contact-section .bubble-1 {
+            position: absolute;
+            top: 15%;
+            right: 10%;
+            width: 140px;
+            height: 140px;
+            background: rgba(255, 122, 0, 0.1);
+            border-radius: 50%;
+            z-index: 0;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        .contact-section .bubble-2 {
+            position: absolute;
+            bottom: 20%;
+            left: 5%;
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 122, 0, 0.1);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            z-index: 0;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        .contact-section .bubble-3 {
+            position: absolute;
+            top: 35%;
+            right: 70%;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 122, 0, 0.1);
+            border-radius: 50%;
+            z-index: 0;
+            animation: float 12s infinite ease-in-out;
+        }
+
+        .register-section {
+            top: -55px;
+            position: relative;
+        }
+
+        .register-section .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 30px;
+            background: var(--primary-color);
+            border-radius: 10px;
+            color: white;
+            flex-direction: column;
+        }
+
+        .register-section h4 {
+            margin-bottom: 15px;
+        }
+
+        .register-section button {
+            color: white;
+            border: 2px solid white;
+            border-radius: 10px;
+        }
+
+        .register-section button:hover {
+            border: 2px solid white;
+        }
+
+        @media (min-width: 768px) {
+            .register-section {
+                top: -35px;
+            }
+
+            .register-section .header {
+                flex-direction: row;
+            }
+
+            .register-section h4 {
+                margin-bottom: 0;
+            }
+
+        }
+
+        footer {
+            background: var(--section-bg);
+        }
+
+        .footer-link {
+            padding: 0;
+            position: relative;
+            margin-top: -15px;
+            margin-bottom: 0;
+        }
+
+        .footer-link p:not(:last-child),
+        .footer-link a:not(:last-child) {
+            font-size: 16px;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .footer-link p,
+        .footer-link a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .footer-link p:last-child,
+        .footer-link a:last-child {
+            margin-bottom: 0;
+        }
+
+        .footer-link img.rounded {
+            height: auto;
+            max-width: 100%;
+            width: auto;
+            border-radius: .375rem !important;
+        }
+
+        .footer-link .social-icons {
+            padding: 40px 24px 0 24px;
+        }
+
+        .footer-link .social-icons div {
+            width: 40px;
+        }
+
+        .footer-link .service-groups,
+        .footer-link .links-groups {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .footer-link .contact-groups {
+            text-align: center;
+        }
+
+        .footer-link .logo-container {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .footer-link {
+                margin-top: 5px;
+            }
+
+            .footer-link .service-groups,
+            .footer-link .links-groups,
+            .footer-link .contact-groups {
+                text-align: left;
+                margin-bottom: 0;
+            }
+
+            .footer-link .social-icons {
+                padding: 0
+            }
+
+            .footer-link .social-icons div {
+                margin-right: 10px;
+            }
+
+            .footer-link .logo-container {
+                margin-bottom: 30px;
+                text-align: left;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .footer-link .social-icons div {
+                margin-right: 15px;
+            }
+
+
+        }
+
+        .copyrights .copyrights-container {
+            position: relative;
+            background: transparent;
+            height: 180px;
+            margin-top: 0;
+            overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            .copyrights .copyrights-container {
+                height: 123px;
+            }
+        }
+
+        .copyrights .curve-svg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 55vh;
+            height: 34vh;
+            z-index: 10;
+        }
+
+        @media (min-width: 768px) {
+            .copyrights .curve-svg {
+                width: 100%;
+                height: 134%;
+            }
+        }
+
+        .copyrights .copyrights-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 15px 0;
+            z-index: 20;
+        }
+
+        .copyrights .copyrights-content h6 {
+            color: white;
+            font-size: 15px;
+            line-height: 17px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            margin-bottom: 0;
+        }
+
+        .copyrights .wave-path {
+            fill: #FF7A00;
+            animation: waveAnimation 3s linear infinite;
+        }
+
+
+        @keyframes waveAnimation {
+            0% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(-20px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+    </style>
+
+    <style>
+        .faq-section {
+            position: relative;
+            padding: 60px 0 115px 0;
+        }
+
+        @media (min-width: 768px) {
+            .faq-section {
+                padding-bottom: 95px;
+            }
+        }
+
+        .faq-section .bubble-1 {
+            position: absolute;
+            top: 15%;
+            right: 10%;
+            width: 180px;
+            height: 180px;
+            background: rgba(255, 122, 0, 0.08);
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        .faq-section .bubble-2 {
+            position: absolute;
+            bottom: 20%;
+            left: 8%;
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 122, 0, 0.08);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            z-index: -1;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        .faq-section .bubble-3 {
+            position: absolute;
+            top: 40%;
+            left: 15%;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 122, 0, 0.08);
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 12s infinite ease-in-out;
+        }
+
+        .tab-nav {
+            overflow-x: auto;
+            white-space: nowrap;
+            margin-bottom: 20px;
+            padding-bottom: 10px
+        }
+
+        .tab-nav .common-tablist {
+            display: inline-block;
+            flex-wrap: nowrap;
+            white-space: nowrap;
+            border-bottom: 1px solid #dcdcdc
+        }
+
+        @media (min-width: 768px) {
+            .tab-nav .common-tablist {
+                min-width: 100%
+            }
+        }
+
+        @media (min-width: 992px) {
+            .tab-nav .common-tablist {
+                display: flex
+            }
+        }
+
+        .tab-nav .common-tablist li {
+            display: inline-block;
+            padding-top: 2px;
+            padding-left: 2px
+        }
+
+        .tab-nav .common-tablist li a {
+            display: inline-block;
+            cursor: pointer;
+            color: #595959;
+            padding-bottom: 19px;
+            --bs-nav-link-padding-x: 0;
+            --bs-nav-link-padding-y: 0
+        }
+
+        .tab-nav .common-tablist li a:hover {
+            color: #181a1c;
+        }
+
+        .tab-nav .common-tablist li a.active {
+            position: relative;
+            color: #181a1c;
+        }
+
+        .tab-nav .common-tablist li a.active:before {
+            content: "";
+            border-bottom: 4px solid var(--primary-color);
+            position: absolute;
+            width: 100%;
+            bottom: -2px;
+            border-radius: 5px
+        }
+
+        .tab-nav .common-tablist li a.active:hover {
+            color: #181a1c
+        }
+
+        .tab-nav .common-tablist li a:focus-visible {
+            box-shadow: none;
+            outline: 1px auto -webkit-focus-ring-color
+        }
+
+        .tab-nav .common-tablist li:not(:last-child) a {
+            margin-right: 20px
+        }
+
+        .component-faq {
+            align-items: center;
+        }
+
+        @media (min-width: 992px) {
+            .component-faq {
+                border: 0;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width:991.98px) {
+            .before-login .component-faq .container {
+                padding-left: 0;
+                padding-right: 0
+            }
+        }
+
+        .component-faq .faq-container {
+            width: 100%;
+            margin: 0 auto
+        }
+
+        .component-faq .btn-secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .component-faq .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 122, 0, 0.3);
+        }
+
+        @media (min-width: 992px) {
+            .component-faq .faq-container {
+                width: 83.33333333%
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .component-faq .faq-container {
+                width: 66.66666667%
+            }
+        }
+
+        .component-faq .faq-container .accordion-container {
+            width: 100%;
+            margin: 0 auto
+        }
+
+        .component-faq .heading-faq {
+            text-align: left;
+            margin-bottom: 30px
+        }
+
+        @media (min-width: 768px) {
+            .component-faq .heading-faq {
+                text-align: center
+            }
+        }
+
+        @media (min-width: 992px) {
+            .component-faq .heading-faq {
+                margin-bottom: 40px
+            }
+        }
+
+        .component-faq .heading-faq p {
+            margin-top: 10px
+        }
+
+        .component-faq .nav-faq {
+            width: 100%;
+            border-bottom: 1px solid #dcdcdc;
+            white-space: nowrap;
+            flex-wrap: nowrap
+        }
+
+        .component-faq .nav-faq::-webkit-scrollbar {
+            display: none
+        }
+
+        .component-faq .faq-cta {
+            margin-top: 40px
+        }
+
+        .component-faq .faq-cta .btn {
+            background: #FF7A00;
+            color: white;
+            border: none;
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(255, 122, 0, 0.3);
+        }
+
+        .component-faq .faq-cta .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 122, 0, 0.3);
+        }
+
+        .component-faq .tab-content .accordion {
+            --bs-accordion-active-color: #181a1c;
+        }
+
+        .component-faq .tab-content .accordion .accordion-item {
+            --bs-accordion-color: #181a1c;
+            background-color: transparent !important;
+            --bs-accordion-bg: transparent !important;
+        }
+
+        .component-faq .tab-content .accordion .accordion-item .accordion-header {
+            text-align: left
+        }
+
+        .component-faq .tab-content .accordion .accordion-item .accordion-header .accordion-button {
+            font-size: inherit;
+            box-shadow: none;
+            --bs-accordion-active-bg: none;
+            --bs-accordion-active-color: none;
+            --bs-accordion-btn-focus-box-shadow: none;
+            --bs-accordion-btn-padding-x: 0;
+            --bs-accordion-btn-padding-y: 20px;
+            --bs-accordion-btn-color: #181a1c;
+            align-items: flex-start;
+            padding-right: 32px;
+            position: relative;
+            --bs-accordion-btn-bg: transparent;
+        }
+
+        .component-faq .tab-content .accordion .accordion-item .accordion-header .accordion-button:after {
+            --bs-accordion-btn-icon-width: 12px;
+            --bs-accordion-btn-icon: none;
+            display: inline-block;
+            font: normal normal 900 14px Font Awesome\ 6 Free;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            content: "\f078";
+            display: block;
+            right: 2px;
+            color: #181a1c;
+            margin-top: 4px;
+            position: absolute
+        }
+
+        .component-faq .tab-content .accordion .accordion-item .accordion-header .accordion-button:hover::after {
+            color: var(--primary-color);
+        }
+
+        .component-faq .tab-content .accordion .accordion-item .accordion-header .accordion-button:not(.collapsed) {
+            --bs-accordion-btn-padding-x: 0;
+            --bs-accordion-btn-padding-y: 0;
+            padding-top: 20px;
+            padding-bottom: 10px
+        }
+
+        .component-faq .tab-content .accordion .accordion-item .accordion-header .accordion-button:not(.collapsed):after {
+            background-image: none
+        }
+
+        .component-faq .tab-content .accordion .accordion-item .accordion-header .accordion-button .accordion-button:not(.collapsed):after {
+            background-image: var(--bs-accordion-btn-active-icon);
+            transform: var(--bs-accordion-btn-icon-transform)
+        }
+
+        .component-faq .tab-content .accordion .accordion-item .accordion-header .accordion-button:hover {
+            color: #181a1c;
+        }
+
+        .component-faq .tab-content .accordion .accordion-item:first-child {
+            border-top: 1px solid #dcdcdc
+        }
+
+        .component-faq .tab-content .accordion .accordion-item:last-of-type {
+            border-bottom: 1px solid #dcdcdc
+        }
+
+        .component-faq .tab-content .accordion .accordion-item .accordion-body {
+            --bs-accordion-body-padding-y: 0;
+            --bs-accordion-body-padding-x: 0;
+            padding-top: 0;
+            padding-bottom: 20px;
+            padding-right: 20px
+        }
+
+        .component-faq .tab-content .accordion .accordion-item .accordion-body a {
+            font-family: inherit
+        }
+
+        .component-faq .tab-content .accordion .accordion-item .accordion-body ul li {
+            padding-left: 30px;
+            position: relative
+        }
+
+        @media (min-width: 1200px) {
+            .component-faq .tab-content .accordion .accordion-item .accordion-body ul li {
+                padding-left: 25px
+            }
+        }
+
+        .component-faq .tab-content .accordion .accordion-item .accordion-body ul li:before {
+            content: "";
+            position: absolute;
+            left: 10px;
+            top: 9px;
+            width: 4px;
+            height: 4px;
+            border-radius: 25px;
+            background-color: #181a1c;
+        }
+
+        @media (min-width: 1200px) {
+            .component-faq .tab-content .accordion .accordion-item .accordion-body ul li:before {
+                left: 0
+            }
+        }
+
+        .component-faq .tab-content .accordion .accordion-item .accordion-body p {
+            margin-bottom: 15px
+        }
+
+        .component-faq .tab-content .accordion .accordion-item .accordion-body p:last-child {
+            margin-bottom: 0
+        }
+
+        .component-faq .tab-content .accordion .accordion-item .accordion-body p+ul {
+            padding-top: 0
+        }
+
+        .component-faq .tab-content .accordion .accordion-item .accordion-body ul+p {
+            margin-top: 15px
+        }
+
+        .component-faq .tab-content .faq-exp-col-btn {
+            padding-bottom: 30px;
+            padding-top: 0;
+            display: inline-flex;
+            width: 100%;
+            gap: 20px;
+            align-items: flex-start
+        }
+
+        @media (min-width: 768px) {
+            .component-faq .tab-content .faq-exp-col-btn {
+                gap: 30px;
+                justify-content: flex-end
+            }
+        }
+
+        @media (min-width: 1440px) {
+            .component-faq .tab-content .faq-exp-col-btn {
+                padding-top: 10px
+            }
+        }
+
+        .component-faq .tab-content .faq-exp-col-btn .btn-faq-mini {
+            padding: 9px 10px;
+            line-height: 20.4px;
+            width: auto
+        }
+
+        @media (min-width: 992px) {
+            .component-faq .tab-content .faq-exp-col-btn .btn-faq-mini {
+                padding-top: 7px;
+                padding-bottom: 7px;
+                line-height: 19.4px
+            }
+        }
+
+        .component-faq .tab-content .faq-exp-col-btn .btn-faq-mini:before {
+            color: var(--primary-color)
+        }
+
+        .component-faq .tab-content .faq-exp-col-btn .btn-faq-mini:hover:before,
+        .component-faq .tab-content .faq-exp-col-btn .btn-faq-mini:not(:disabled):not(.disabled):focus:before {
+            color: #ffffff
+        }
+
+        .component-faq .tab-content .faq-exp-col-btn .btn-faq-mini:last-child {
+            margin-left: 10px
+        }
+
+        @media (min-width: 768px) {
+            .component-faq .tab-content .faq-exp-col-btn .btn-faq-mini:last-child {
+                margin-left: 0
+            }
+        }
+
+        .component-faq.full-width {
+            margin-bottom: 0
+        }
+
+        .component-faq.full-width .tab-content .faq-exp-col-btn {
+            padding-bottom: 20px;
+            flex-wrap: wrap
+        }
+
+        @media (min-width: 768px) {
+            .component-faq.full-width .tab-content .faq-exp-col-btn {
+                flex-wrap: nowrap
+            }
+        }
+
+        @media (min-width: 992px) {
+            .component-faq.full-width .tab-content .faq-exp-col-btn {
+                padding-top: 0
+            }
+        }
+
+        .component-faq.full-width .tab-content .faq-exp-col-btn .h4 {
+            margin-bottom: 0;
+            flex: 1 1 100%
+        }
+
+        @media (min-width: 768px) {
+            .component-faq.full-width .tab-content .faq-exp-col-btn .h4 {
+                margin-right: auto;
+                flex: unset;
+                max-width: 380px
+            }
+        }
+
+        @media (min-width: 992px) {
+            .component-faq.full-width .tab-content .faq-exp-col-btn .h4 {
+                max-width: 450px
+            }
+
+            .after-login .component-faq.full-width .tab-content .faq-exp-col-btn .h4 {
+                max-width: 380px
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .after-login .component-faq.full-width .tab-content .faq-exp-col-btn .h4 {
+                max-width: 450px
+            }
+        }
+
+        .component-faq.full-width .tab-content .accordion-flush {
+            margin-bottom: 40px
+        }
+
+        @media (min-width: 992px) {
+            .component-faq.full-width .tab-content .accordion-flush {
+                margin-bottom: 60px
+            }
+        }
+
+        .component-faq.full-width .faq-container {
+            width: 100%
+        }
+
+        @media (min-width: 992px) {
+            .component-faq.full-width .faq-container .accordion-container {
+                width: 83.33333333%
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .component-faq.full-width .faq-container .accordion-container {
+                width: 66.66666667%
+            }
+        }
+
+        @media (min-width: 992px) {
+            .component-faq.with-remove-tab-width .tab-nav .common-tablist a {
+                max-width: 220px;
+                white-space: break-spaces;
+                height: 100%
+            }
+        }
+
+        .faq-jumplink-container {
+            border: 1px solid #dcdcdc;
+            border-bottom: 2px solid #0074e8;
+            border-radius: 5px 5px 0 0;
+            margin-bottom: 40px;
+            position: relative
+        }
+
+        .faq-jumplink-container p {
+            margin-bottom: 0
+        }
+
+        @media(min-width: 992px) {
+            .faq-jumplink-container {
+                margin-bottom: 60px
+            }
+        }
+
+        .faq-jumplink-container .btn-dismiss-all,
+        .faq-jumplink-container .btn-view-all,
+        .faq-jumplink-container a {
+            cursor: pointer
+        }
+
+        .faq-jumplink-container .btn-dismiss-all:after,
+        .faq-jumplink-container .btn-view-all:after,
+        .faq-jumplink-container a:after {
+            color: #333
+        }
+
+        .faq-jumplink-container .section {
+            overflow: hidden;
+            position: relative
+        }
+
+        .faq-jumplink-container .section.content-height {
+            height: 231px
+        }
+
+        .faq-jumplink-container .section .content-margin {
+            padding: 30px 15px
+        }
+
+        @media(min-width: 992px) {
+            .faq-jumplink-container .section .content-margin {
+                padding: 30px 40px 40px
+            }
+        }
+
+        .faq-jumplink-container .section .content-margin h6 {
+            font-family: var(--font-open-sans-bold);
+            padding-bottom: 19px
+        }
+
+        .faq-jumplink-container .section .content-margin .links li:not(:last-child),
+        .faq-jumplink-container .section .content-margin p {
+            padding-bottom: 10px
+        }
+
+        .faq-jumplink-container .section .content-margin .links .col:not(:first-child) {
+            padding-top: 30px
+        }
+
+        @media(min-width: 768px) {
+            .faq-jumplink-container .section .content-margin .links .col:nth-child(-n+2) {
+                padding-top: 0
+            }
+        }
+
+        @media(min-width: 1200px) {
+            .faq-jumplink-container .section .content-margin .links .col:nth-child(-n+3) {
+                padding-top: 0
+            }
+        }
+
+        .faq-jumplink-container .hide {
+            display: none
+        }
+
+        .faq-jumplink-container .toggle-btns {
+            display: flex;
+            justify-content: center
+        }
+
+        .faq-jumplink-container .gradient {
+            height: 100px;
+            width: calc(100% + 2px);
+            left: -1px;
+            bottom: 0;
+            position: absolute;
+            background: rgba(0, 0, 0, 0) linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, .87) 87%, #ffffff) 0 0 no-repeat padding-box
+        }
+
+        .faq-jumplink-container .btn-view-all {
+            margin-bottom: 15px;
+            z-index: 1
+        }
+
+        .faq-jumplink-container .btn-dismiss-all {
+            margin-bottom: 30px
+        }
+    </style>
+</head>
+
+<body class="before-login">
+    <!-- Navigation Section -->
+    <header class="header  sticky-top">
+        <nav id="mainNav" class="navbar navbar-expand-lg">
+            <div class="container d-flex align-items-center justify-content-start justify-content-lg-between p-md-0">
+                <!-- Hamburger menu before logo for mobile -->
+                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#mobileMenu" aria-controls="mobileMenu">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <a class="navbar-brand" href="#"><img class="logo" src="./img/logo.png" /></a>
+
+                <!-- Desktop Menu -->
+                <div class="collapse navbar-collapse d-none d-lg-block" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Feature</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Pricing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Resources</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact</a>
+                        </li>
+                        <!-- Combined login and language in same row -->
+                        <div class="right-menu d-flex">
+                            <li class="nav-item">
+                                <a class="nav-link login-btn" href="#">Login</a>
+                            </li>
+                            <li class="nav-item dropdown language-dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                    <i class="fas fa-globe me-2"></i>Language
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#"><i
+                                                class="fas fa-language me-2"></i>English</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="fas fa-language me-2"></i>Hindi</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu Offcanvas - Now opens from right -->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+            <div class="offcanvas-header">
+                <button class="btn-close-custom" data-bs-dismiss="offcanvas" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="mobile-menu">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Feature</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Pricing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Resources</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact</a>
+                        </li>
+                    </ul>
+
+                    <!-- Right side menu with login and language in same row -->
+                    <div class="right-menu">
+                        <a class="nav-link login-btn" href="#">Login</a>
+                        <div class="nav-item dropdown language-dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-globe me-2"></i>Language
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-language me-2"></i>English</a>
+                                </li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-language me-2"></i>Hindi</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="carousel-section">
+            <div id="brandCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#brandCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#brandCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#brandCarousel" data-bs-slide-to="2"></button>
+                </div>
+
+                <div class="carousel-inner">
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active"
+                        style="background-image: url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+                        <div class="carousel-overlay"></div>
+                        <div class="carousel-content">
+                            <div class="container p-0">
+                                <div class="row">
+                                    <div class="col-lg-8 col-md-10">
+                                        <h1 class="carousel-title">We create <span>solutions</span> for your business
+                                        </h1>
+                                        <p class="carousel-subtitle">Our team keeps a keen eye on emerging trends and
+                                            technologies to ensure your marketing campaigns remain cutting-edge.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="carousel-item"
+                        style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+                        <div class="carousel-overlay"></div>
+                        <div class="carousel-content">
+                            <div class="container p-0">
+                                <div class="row">
+                                    <div class="col-lg-8 col-md-10">
+                                        <h1 class="carousel-title">Innovative <span>strategies</span> for growth</h1>
+                                        <p class="carousel-subtitle">We develop customized marketing approaches that
+                                            align with your business objectives and drive measurable results.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="carousel-item"
+                        style="background-image: url('https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2120&q=80');">
+                        <div class="carousel-overlay"></div>
+                        <div class="carousel-content">
+                            <div class="container p-0">
+                                <div class="row">
+                                    <div class="col-lg-8 col-md-10">
+                                        <h1 class="carousel-title">Transform your <span>brand</span> presence</h1>
+                                        <p class="carousel-subtitle">Our experts help you build a compelling brand
+                                            identity that resonates with your target audience and stands out in the
+                                            market.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carousel Controls -->
+                <!-- <button class="carousel-control-prev d-none d-md-block" type="button" data-bs-target="#brandCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next d-none d-md-block" type="button" data-bs-target="#brandCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button> -->
+            </div>
+
+            <div class="marquee-banner">
+                <div class="marquee-content">
+                    <span>Get Up to 40% Discount On All Our Services | Guaranteed Unbeatable Prices!</span>
+                    <span>Get Up to 40% Discount On All Our Services | Guaranteed Unbeatable Prices!</span>
+                    <span>Get Up to 40% Discount On All Our Services | Guaranteed Unbeatable Prices!</span>
+                    <span>Get Up to 40% Discount On All Our Services | Guaranteed Unbeatable Prices!</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+                    <div class="col-12 col-lg-6">
+                        <div class="row img-container">
+                            <div class="col-6 text-end">
+                                <img class="img-mask-1"
+                                    src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                                    alt="250 Venue in Wedding Host">
+                                <div class="d-flex align-items-center justify-content-end mt-3">
+                                    <div class="d-inline-block pe-2">
+                                        <p class="sm-heading">Auctions</p>
+                                    </div>
+                                    <div class="d-inline-block">
+                                        <div class="fw-medium display-4 letter-spacing-1 text-dark">
+                                            <span class="counter">250</span>
+                                        </div>
+                                    </div>
+                                    <h4 class="line-height-100 fw-normal mb-0">+</h4>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="d-inline-block">
+                                        <div class="fw-medium display-4 letter-spacing-1 text-dark">
+                                            <span class="counter">7</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-inline-block ps-2">
+                                        <h4 class="line-height-100 fw-normal mb-0">+</h4>
+                                        <p class="sm-heading">Years of Experience</p>
+                                    </div>
+                                </div>
+                                <img class="img-mask-2"
+                                    src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                                    alt="7 YEARS OF EXPERIENCE">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <h2 class="mb-3"><span class="highlight">Revolutionizing </span>Cricket Auctions</h2>
+                        <p>Auction Adda® transforms cricket tournaments with a powerful digital platform that simplifies
+                            player bidding and team management. We bring transparency and efficiency to cricket auctions
+                            while giving players unprecedented control.</p>
+                        <a class="button button-lg button-font-2 mt-4" href="/services">Explore Platform</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Decorative shapes -->
+            <div class="bubble-1"></div>
+            <div class="bubble-2"></div>
+            <div class="bubble-3"></div>
+        </section>
+
+        <section class="features-section">
+            <div class="container">
+                <div class="features-header">
+                    <h2>Your Complete Cricket <span class="highlight">Auction Solution</span></h2>
+                    <p class="mt-3">Experience next-generation cricket auctions with our comprehensive platform designed
+                        for players, franchises, and fans
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 col-lg-3 col-xl-2-4 mb-4">
+                        <div class="service-card bi bi-person-check yellow">
+                            <h3>Single Registration Access</h3>
+                            <p>One-time player registration grants lifetime access to all tournaments on our platform.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 - Marketing -->
+                    <div class="col-md-6 col-lg-3 col-xl-2-4 mb-4">
+                        <div class="service-card bi bi-translate green">
+                            <h3>Multilingual Platform</h3>
+                            <p>Access our system in multiple languages for global accessibility</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 - Vital Campaign -->
+                    <div class="col-md-6 col-lg-3 col-xl-2-4 mb-4">
+                        <div class="service-card bi bi-star velvet">
+                            <h3>Player Watchlists</h3>
+                            <p>Create and manage personalized player shortlists before the auction begins.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 - Others -->
+                    <div class="col-md-6 col-lg-3 col-xl-2-4 mb-4">
+                        <div class="service-card bi bi-file-earmark-bar-graph red">
+                            <h3>Player Performance Analytics</h3>
+                            <p>Access comprehensive player statistics and historical performance data before bidding.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 - Additional Service -->
+                    <div class="col-md-6 col-lg-3 col-xl-2-4 mb-4">
+                        <div class="service-card bi bi-lightning-charge yellow">
+                            <h3>Instant Auction Platform</h3>
+                            <p>Dynamic player bidding with live updates. Share your unique tournament link for
+                                spectators to follow the action.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 col-xl-2-4 mb-4">
+                        <div class="service-card bi bi-stopwatch green">
+                            <h3>Quick Tournament Launch</h3>
+                            <p>Set up complete auction tournaments in minutes with our intuitive configuration system.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 col-xl-2-4 mb-4">
+                        <div class="service-card bi bi-stopwatch velvet">
+                            <h3>Global Bidding Access</h3>
+                            <p>Participate in auctions from any location worldwide using any internet-connected device.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 col-xl-2-4 mb-4">
+                        <div class="service-card bi bi-stopwatch red">
+                            <h3>Mobile Bidding System</h3>
+                            <p>Place bids remotely using our mobile-optimized interface from any smartphone or tablet.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="shape-1"></div>
+            <div class="shape-2"></div>
+        </section>
+
+        <section class="why-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12 col-lg-6">
+                        <h2><span class="highlight">Why </span>Auction Adda?</span></h2>
+                        <p>Our platform is engineered to transform cricket auctions into exhilarating, strategic
+                            experiences. From real-time bidding with global accessibility to seamless team management,
+                            we’ve meticulously crafted every feature to ensure transparency, fairness, and unmatched
+                            excitement.</p>
+                        <p>Perfect for Every Cricket Event whether it’s a local club auction, a corporate tournament, or
+                            a premier league draft</p>
+                        <p>Experience a hassle-free and unforgettable auctions that includes Stress-Free Execution,
+                            Curated Excellence, Emotional Resonance and Universal Appeal.</p>
+                        <p>Auction Adda® as the essential partner for anyone running or participating in cricket
+                            auctions—emphasizing control, strategy, and cutting-edge tech.</p>
+                        <p>Elevate your next auction with a seamless blend of professionalism and sophistication.</p>
+                        <p>Elevate your auction from chaotic to captivating. Our platform handles logistics, analytics,
+                            and compliance—so you focus on strategy. Build dream teams, outsmart rivals, and ignite
+                            tournament passion from the very first bid.</p>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="row justify-content-center">
+                            <div class="col-6 mb-4">
+                                <img class="why-img"
+                                    src="https://images.pexels.com/photos/673659/pexels-photo-673659.jpeg?auto=compress&cs=tinysrgb&w=800"
+                                    alt="Create cherished moments with Wedding Host">
+                            </div>
+                            <div class="col-6 mb-4">
+                                <img class="why-img"
+                                    src="https://images.pexels.com/photos/1779416/pexels-photo-1779416.jpeg?auto=compress&cs=tinysrgb&w=800"
+                                    alt="Unforgettable event with Wedding Host">
+                            </div>
+                            <div class="col-6">
+                                <img class="why-img img-overlap"
+                                    src="https://images.pexels.com/photos/10123066/pexels-photo-10123066.jpeg?auto=compress&cs=tinysrgb&w=800"
+                                    alt="Make your special day truly remarkable with Wedding Host">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bubble background elements -->
+            <div class="bubble-1"></div>
+            <div class="bubble-2"></div>
+            <div class="bubble-3"></div>
+        </section>
+
+        <section class="steps-section">
+            <div class="container">
+
+
+                <div class="row align-items-center">
+                    <div class="col-lg-6 mb-4 mb-lg-0">
+                        <div class="steps-img">
+                            <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                                alt="Business Solutions">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="section-heading">
+                            <h2>Simple <span class="highlight">Solutions!</span></h2>
+                            <p>We understand that no two businesses are alike. That's why we take the time to understand
+                            </p>
+                        </div>
+                        <div class="steps-container">
+                            <div class="steps-content">
+                                <!-- Step 1 -->
+                                <div class="step-item">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <h3>Create Auction</h3>
+                                        <p>Set up your cricket auction with custom rules, trial mode options, and
+                                            team/player limits. Copy settings from previous auctions to save time</p>
+                                    </div>
+                                </div>
+
+                                <!-- Step 2 -->
+                                <div class="step-item">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <h3>Manage Teams</h3>
+                                        <p>Define franchises with unique identities, assign multiple owners per team,
+                                            and set collaborative bidding permissions</p>
+                                    </div>
+                                </div>
+
+                                <!-- Step 3 -->
+                                <div class="step-item">
+                                    <div class="step-number">3</div>
+                                    <div class="step-content">
+                                        <h3>Register Players</h3>
+                                        <p>Add players manually or approve join requests. Organizers can bulk upload,
+                                            players can maintain detailed stats profiles</p>
+                                    </div>
+                                </div>
+
+                                <!-- Step 4 -->
+                                <div class="step-item">
+                                    <div class="step-number">4</div>
+                                    <div class="step-content">
+                                        <h3>Launch Live Auction</h3>
+                                        <p>Start real-time bidding with dynamic purse tracking, overspend prevention,
+                                            and instant bid updates across all devices</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="shape-1"></div>
+            <div class="shape-2"></div>
+        </section>
+
+        <section class="features-section youtube-section">
+            <div class="container">
+                <div class="features-header">
+                    <h2>Some Latest Post From <span class="highlight">YouTube</span></h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-lg-3 col-xl-2-4 mb-4">
+                        <div class="service-card">
+                            <iframe width="100%" height="480" src="https://www.youtube.com/embed/jNQXAC9IVRw"
+                                title="NASA Shorts: Earth Views"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 col-xl-2-4 mb-4">
+                        <div class="service-card">
+                            <iframe width="100%" height="480" src="https://www.youtube.com/embed/jNQXAC9IVRw"
+                                title="NASA Shorts: Earth Views"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 col-xl-2-4 mb-4">
+                        <div class="service-card">
+                            <iframe width="100%" height="480" src="https://www.youtube.com/embed/jNQXAC9IVRw"
+                                title="NASA Shorts: Earth Views"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 col-xl-2-4 mb-4">
+                        <div class="service-card">
+                            <iframe width="100%" height="480" src="https://www.youtube.com/embed/jNQXAC9IVRw"
+                                title="NASA Shorts: Earth Views"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 col-xl-2-4 mb-4">
+                        <div class="service-card">
+                            <iframe width="100%" height="480" src="https://www.youtube.com/embed/jNQXAC9IVRw"
+                                title="NASA Shorts: Earth Views"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 col-xl-2-4 mb-4">
+                        <div class="service-card">
+                            <iframe width="100%" height="480" src="https://www.youtube.com/embed/jNQXAC9IVRw"
+                                title="NASA Shorts: Earth Views"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 col-xl-2-4 mb-4">
+                        <div class="service-card">
+                            <iframe width="100%" height="480" src="https://www.youtube.com/embed/jNQXAC9IVRw"
+                                title="NASA Shorts: Earth Views"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 col-xl-2-4 mb-4">
+                        <div class="service-card">
+                            <iframe width="100%" height="480" src="https://www.youtube.com/embed/jNQXAC9IVRw"
+                                title="NASA Shorts: Earth Views"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bubble-1"></div>
+                <div class="bubble-2"></div>
+                <div class="bubble-3"></div>
+        </section>
+
+        <section class="contact-section features-section">
+            <div class="container">
+                <div class="features-header">
+                    <h2>Build Your Championship Squad – <span class="highlight">Contact Our </span>Auction Strategists
+                    </h2>
+                </div>
+                <div class="row justify-content-md-center">
+                    <div class="col-lg-6">
+                        <div class="contact-form">
+                            <form class="needs-validation ">
+                                <div class="input-group">
+                                    <div class="input-icon-container">
+                                        <div class="icon-container"><i class="bi bi-person"></i></div><input
+                                            placeholder="Your Name" class="alpha-only" required="" type="text" value=""
+                                            name="name">
+                                    </div>
+                                    <div class="invalid-feedback p-small semibold">Please enter your Full Name</div>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-icon-container">
+                                        <div class="icon-container"><i class="bi bi-telephone"></i></div><input
+                                            placeholder="Contact Number" class="numeric-only" minlength="10"
+                                            maxlength="10" pattern="[5-9]{1}[0-9]{9}" required="" type="text" value=""
+                                            name="contact">
+                                    </div>
+                                    <div class="invalid-feedback p-small semibold">Please enter your Contact Number
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-icon-container">
+                                        <div class="icon-container"><i class="bi bi-envelope"></i></div><input
+                                            placeholder="Email Address" maxlength="50" required=""
+                                            pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" type="email" value="" name="email">
+                                    </div>
+                                    <div class="invalid-feedback p-small semibold">Please enter your Email Address</div>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-icon-container">
+                                        <div class="icon-container"><i class="bi bi-card-heading"></i></div><input
+                                            placeholder="Subject" maxlength="200" required="" type="text" value=""
+                                            name="subject">
+                                    </div>
+                                    <div class="invalid-feedback p-small semibold">Please enter your Subject</div>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-icon-container textarea-container">
+                                        <div class="icon-container textarea-icon"><i class="bi bi-chat-left-text"></i>
+                                        </div>
+                                        <textarea name="message" placeholder="Your Message" required="" maxlength="500"
+                                            rows="5"></textarea>
+                                    </div>
+                                    <div class="invalid-feedback p-small semibold">Please enter your Message</div>
+                                </div><button type="button" class="btn btn-primary submit-btn"><i
+                                        class="bi bi-send me-2"></i> Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bubble-1"></div>
+            <div class="bubble-2"></div>
+            <div class="bubble-3"></div>
+        </section>
+
+        <section class="faq-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div
+                            class="component content component-box col-12 no-typography component-faq component-spacing with-remove-tab-width">
+                            <div class="component-content">
+                                <div class="row">
+                                    <div class="container tabnav-container">
+                                        <div class="faq-container">
+                                            <div class="tab-nav">
+                                                <ul class="nav common-tablist" role="tablist">
+                                                    <li class="nav-item" role="presentation"><a class="nav-link  active"
+                                                            id="registration-tips-tab"
+                                                            data-bs-target="#registration-tips" data-bs-toggle="tab"
+                                                            role="tab" aria-selected="true" tabindex="0"
+                                                            href="/">Registration Tips</a></li>
+                                                    <li class="nav-item" role="presentation"><a class="nav-link  "
+                                                            id="auction-tips-tab" data-bs-target="#auction-tips"
+                                                            data-bs-toggle="tab" role="tab" aria-selected="false"
+                                                            tabindex="0" href="/">Auction Tips</a></li>
+                                                    <li class="nav-item" role="presentation"><a class="nav-link  "
+                                                            id="player-tips-tab" data-bs-target="#player-tips"
+                                                            data-bs-toggle="tab" role="tab" aria-selected="false"
+                                                            tabindex="0" href="/">Player Tips</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="tab-content">
+                                                <div class="tab-pane active show" id="registration-tips" role="tabpanel"
+                                                    aria-labelledby="registration-tips-tab">
+                                                    <div class="row">
+                                                        <div class="component content col-12 undefined">
+                                                            <div class="component-content">
+                                                                <div class="accordion-container"
+                                                                    id="registration-tips-tab">
+                                                                    <div
+                                                                        class="d-flex justify-content-start justify-content-md-end faq-exp-col-btn">
+                                                                        <button
+                                                                            class="btn btn-secondary btn-faq-mini btn-mini left with-bs-icon chevron-up-and-down expand-btn"
+                                                                            type="button">Expand All</button><button
+                                                                            class="btn btn-secondary btn-faq-mini  btn-mini left with-bs-icon chevron-up-and-down-inverted collapse-btn"
+                                                                            type="button">Collapse All</button>
+                                                                    </div>
+                                                                    <div class="accordion accordion-flush">
+                                                                        <div class="accordion-item">
+                                                                            <h3 class="accordion-header semibold h5"
+                                                                                id="heading-1">
+                                                                                <button
+                                                                                    class="accordion-button collapsed"
+                                                                                    type="button"
+                                                                                    data-bs-toggle="collapse"
+                                                                                    data-bs-target="#collapse-1"
+                                                                                    aria-expanded="false"
+                                                                                    aria-controls="collapse-1">What's
+                                                                                    needed to
+                                                                                    register?</button>
+                                                                            </h3>
+                                                                            <div id="collapse-1"
+                                                                                class="accordion-collapse collapse"
+                                                                                aria-labelledby="heading-1"
+                                                                                data-bs-parent="#accordion-registration-tips-tab">
+                                                                                <div class="accordion-body">
+                                                                                    <p>Just provide your name, email and
+                                                                                        mobile
+                                                                                        number. Other fields are
+                                                                                        optional.</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="accordion-item">
+                                                                            <h3 class="accordion-header semibold h5"
+                                                                                id="heading-2">
+                                                                                <button
+                                                                                    class="accordion-button collapsed"
+                                                                                    type="button"
+                                                                                    data-bs-toggle="collapse"
+                                                                                    data-bs-target="#collapse-2"
+                                                                                    aria-expanded="false"
+                                                                                    aria-controls="collapse-2">How do I
+                                                                                    set my
+                                                                                    password?</button>
+                                                                            </h3>
+                                                                            <div id="collapse-2"
+                                                                                class="accordion-collapse collapse"
+                                                                                aria-labelledby="heading-2"
+                                                                                data-bs-parent="#accordion-registration-tips-tab">
+                                                                                <div class="accordion-body">
+                                                                                    <p>Use the 'Forgot Password' link.
+                                                                                        After
+                                                                                        verification, you can create a
+                                                                                        new password.
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="accordion-item">
+                                                                            <h3 class="accordion-header semibold h5"
+                                                                                id="heading-3">
+                                                                                <button
+                                                                                    class="accordion-button collapsed"
+                                                                                    type="button"
+                                                                                    data-bs-toggle="collapse"
+                                                                                    data-bs-target="#collapse-3"
+                                                                                    aria-expanded="false"
+                                                                                    aria-controls="collapse-3">Can I
+                                                                                    update my
+                                                                                    information later?</button>
+                                                                            </h3>
+                                                                            <div id="collapse-3"
+                                                                                class="accordion-collapse collapse"
+                                                                                aria-labelledby="heading-3"
+                                                                                data-bs-parent="#accordion-registration-tips-tab">
+                                                                                <div class="accordion-body">
+                                                                                    <p>Yes! After logging in, you can
+                                                                                        edit your
+                                                                                        profile anytime in the Profile
+                                                                                        section.</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="accordion-item">
+                                                                            <h3 class="accordion-header semibold h5"
+                                                                                id="heading-4">
+                                                                                <button
+                                                                                    class="accordion-button collapsed"
+                                                                                    type="button"
+                                                                                    data-bs-toggle="collapse"
+                                                                                    data-bs-target="#collapse-4"
+                                                                                    aria-expanded="false"
+                                                                                    aria-controls="collapse-4">Who can
+                                                                                    see my email
+                                                                                    and phone number?</button>
+                                                                            </h3>
+                                                                            <div id="collapse-4"
+                                                                                class="accordion-collapse collapse"
+                                                                                aria-labelledby="heading-4"
+                                                                                data-bs-parent="#accordion-registration-tips-tab">
+                                                                                <div class="accordion-body">
+                                                                                    <p>Only organizers and admins can
+                                                                                        view this
+                                                                                        information, not other players.
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane " id="auction-tips" role="tabpanel"
+                                                    aria-labelledby="auction-tips-tab">
+                                                    <div class="row">
+                                                        <div class="component content col-12 undefined">
+                                                            <div class="component-content">
+                                                                <div class="accordion-container" id="auction-tips-tab">
+                                                                    <div
+                                                                        class="d-flex justify-content-start justify-content-md-end faq-exp-col-btn">
+                                                                        <button
+                                                                            class="btn btn-secondary btn-faq-mini btn-mini left with-bs-icon chevron-up-and-down expand-btn"
+                                                                            type="button">Expand All</button><button
+                                                                            class="btn btn-secondary btn-faq-mini  btn-mini left with-bs-icon chevron-up-and-down-inverted collapse-btn"
+                                                                            type="button">Collapse All</button>
+                                                                    </div>
+                                                                    <div class="accordion accordion-flush">
+                                                                        <div class="accordion-item">
+                                                                            <h3 class="accordion-header semibold h5"
+                                                                                id="heading-13"><button
+                                                                                    class="accordion-button collapsed"
+                                                                                    type="button"
+                                                                                    data-bs-toggle="collapse"
+                                                                                    data-bs-target="#collapse-13"
+                                                                                    aria-expanded="false"
+                                                                                    aria-controls="collapse-13">How do I
+                                                                                    create an
+                                                                                    auction?</button></h3>
+                                                                            <div id="collapse-13"
+                                                                                class="accordion-collapse collapse"
+                                                                                aria-labelledby="heading-13"
+                                                                                data-bs-parent="#accordion-auction-tips-tab">
+                                                                                <div class="accordion-body">
+                                                                                    <p>After logging in, you'll find a
+                                                                                        'Create
+                                                                                        Auction' option in your
+                                                                                        dashboard.</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="accordion-item">
+                                                                            <h3 class="accordion-header semibold h5"
+                                                                                id="heading-14"><button
+                                                                                    class="accordion-button collapsed"
+                                                                                    type="button"
+                                                                                    data-bs-toggle="collapse"
+                                                                                    data-bs-target="#collapse-14"
+                                                                                    aria-expanded="false"
+                                                                                    aria-controls="collapse-14">Can I
+                                                                                    run auctions
+                                                                                    without payment?</button></h3>
+                                                                            <div id="collapse-14"
+                                                                                class="accordion-collapse collapse"
+                                                                                aria-labelledby="heading-14"
+                                                                                data-bs-parent="#accordion-auction-tips-tab">
+                                                                                <div class="accordion-body">
+                                                                                    <p>Yes! Use Trial Mode for practice
+                                                                                        auctions -
+                                                                                        no payment required.</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="accordion-item">
+                                                                            <h3 class="accordion-header semibold h5"
+                                                                                id="heading-15"><button
+                                                                                    class="accordion-button collapsed"
+                                                                                    type="button"
+                                                                                    data-bs-toggle="collapse"
+                                                                                    data-bs-target="#collapse-15"
+                                                                                    aria-expanded="false"
+                                                                                    aria-controls="collapse-15">How many
+                                                                                    trial
+                                                                                    auctions can I run?</button></h3>
+                                                                            <div id="collapse-15"
+                                                                                class="accordion-collapse collapse"
+                                                                                aria-labelledby="heading-15"
+                                                                                data-bs-parent="#accordion-auction-tips-tab">
+                                                                                <div class="accordion-body">
+                                                                                    <p>You get 1 free trial auction to
+                                                                                        test the
+                                                                                        system.</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="accordion-item">
+                                                                            <h3 class="accordion-header semibold h5"
+                                                                                id="heading-16"><button
+                                                                                    class="accordion-button collapsed"
+                                                                                    type="button"
+                                                                                    data-bs-toggle="collapse"
+                                                                                    data-bs-target="#collapse-16"
+                                                                                    aria-expanded="false"
+                                                                                    aria-controls="collapse-16">How many
+                                                                                    teams can I
+                                                                                    add in trial mode?</button></h3>
+                                                                            <div id="collapse-16"
+                                                                                class="accordion-collapse collapse"
+                                                                                aria-labelledby="heading-16"
+                                                                                data-bs-parent="#accordion-auction-tips-tab">
+                                                                                <div class="accordion-body">
+                                                                                    <p>Trial auctions allow up to 2
+                                                                                        teams.</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane " id="player-tips" role="tabpanel"
+                                                    aria-labelledby="player-tips-tab">
+                                                    <div class="row">
+                                                        <div class="component content col-12 undefined">
+                                                            <div class="component-content">
+                                                                <div class="accordion-container" id="player-tips-tab">
+                                                                    <div
+                                                                        class="d-flex justify-content-start justify-content-md-end faq-exp-col-btn">
+                                                                        <button
+                                                                            class="btn btn-secondary btn-faq-mini btn-mini left with-bs-icon chevron-up-and-down expand-btn"
+                                                                            type="button">Expand All</button><button
+                                                                            class="btn btn-secondary btn-faq-mini  btn-mini left with-bs-icon chevron-up-and-down-inverted collapse-btn"
+                                                                            type="button">Collapse All</button>
+                                                                    </div>
+                                                                    <div class="accordion accordion-flush">
+                                                                        <div class="accordion-item">
+                                                                            <h3 class="accordion-header semibold h5"
+                                                                                id="heading-29"><button
+                                                                                    class="accordion-button collapsed"
+                                                                                    type="button"
+                                                                                    data-bs-toggle="collapse"
+                                                                                    data-bs-target="#collapse-29"
+                                                                                    aria-expanded="false"
+                                                                                    aria-controls="collapse-29">How do I
+                                                                                    find
+                                                                                    auctions to join?</button></h3>
+                                                                            <div id="collapse-29"
+                                                                                class="accordion-collapse collapse"
+                                                                                aria-labelledby="heading-29"
+                                                                                data-bs-parent="#accordion-player-tips-tab">
+                                                                                <div class="accordion-body">
+                                                                                    <p>See nearby auctions in your
+                                                                                        dashboard or
+                                                                                        search by name.</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="accordion-item">
+                                                                            <h3 class="accordion-header semibold h5"
+                                                                                id="heading-30"><button
+                                                                                    class="accordion-button collapsed"
+                                                                                    type="button"
+                                                                                    data-bs-toggle="collapse"
+                                                                                    data-bs-target="#collapse-30"
+                                                                                    aria-expanded="false"
+                                                                                    aria-controls="collapse-30">What's
+                                                                                    the payment
+                                                                                    process?</button></h3>
+                                                                            <div id="collapse-30"
+                                                                                class="accordion-collapse collapse"
+                                                                                aria-labelledby="heading-30"
+                                                                                data-bs-parent="#accordion-player-tips-tab">
+                                                                                <div class="accordion-body">
+                                                                                    <p>Click 'Join Auction', view rules,
+                                                                                        pay via QR
+                                                                                        code, then upload payment proof
+                                                                                        for
+                                                                                        verification.</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="accordion-item">
+                                                                            <h3 class="accordion-header semibold h5"
+                                                                                id="heading-31"><button
+                                                                                    class="accordion-button collapsed"
+                                                                                    type="button"
+                                                                                    data-bs-toggle="collapse"
+                                                                                    data-bs-target="#collapse-31"
+                                                                                    aria-expanded="false"
+                                                                                    aria-controls="collapse-31">What if
+                                                                                    my payment
+                                                                                    fails?</button></h3>
+                                                                            <div id="collapse-31"
+                                                                                class="accordion-collapse collapse"
+                                                                                aria-labelledby="heading-31"
+                                                                                data-bs-parent="#accordion-player-tips-tab">
+                                                                                <div class="accordion-body">
+                                                                                    <p>Contact support through the
+                                                                                        Contact Us page
+                                                                                        for assistance.</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="accordion-item">
+                                                                            <h3 class="accordion-header semibold h5"
+                                                                                id="heading-32"><button
+                                                                                    class="accordion-button collapsed"
+                                                                                    type="button"
+                                                                                    data-bs-toggle="collapse"
+                                                                                    data-bs-target="#collapse-32"
+                                                                                    aria-expanded="false"
+                                                                                    aria-controls="collapse-32">Can I
+                                                                                    update my
+                                                                                    cricket skills?</button></h3>
+                                                                            <div id="collapse-32"
+                                                                                class="accordion-collapse collapse"
+                                                                                aria-labelledby="heading-32"
+                                                                                data-bs-parent="#accordion-player-tips-tab">
+                                                                                <div class="accordion-body">
+                                                                                    <p>Yes! Edit your profile anytime to
+                                                                                        add/update
+                                                                                        your skills and stats.</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="d-md-flex justify-content-center faq-cta"><a
+                                                    class="btn btn-primary with-bs-icon chevron-right" href="/faqs">View
+                                                    All
+                                                    FAQs</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bubble-1"></div>
+            <div class="bubble-2"></div>
+            <div class="bubble-3"></div>
+        </section>
+
+    </main>
+    <!-- Carousel Section -->
+    <footer>
+        <section class="register-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+                        <div class="header">
+                            <h4>Ready to get Started?</h4>
+                            <button type="button" class="btn btn-outline register-btn">Register Now</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <section class="footer-link">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-3 col-lg-4 col-xl-3">
+                        <div class="logo-container">
+                            <a href="/">
+                                <h4>Auction <span class="highlight"><i>Adda</i></span></h4>
+                            </a>
+                            <p>Auction Adda is a reliable and well-known name in the Auction industry. Build Your
+                                Championship Squad.</p>
+                        </div>
+                        <div class="d-none d-md-flex justify-content-between justify-content-lg-start social-icons">
+                            <div><a rel="noopener noreferrer nofollow" href="#"><img src="./img/whatsapp.png"
+                                        alt="chart success" class="rounded"></a></div>
+                            <div><a rel="noopener noreferrer nofollow" href="#"><img src="./img/youtube.png"
+                                        alt="chart success" class="rounded"></a></div>
+                            <div><a rel="noopener noreferrer nofollow" href="#"><img src="./img/facebook.png"
+                                        alt="chart success" class="rounded"></a></div>
+                            <div><a rel="noopener noreferrer nofollow" href="#"><img src="./img/instagram.png"
+                                        alt="chart success" class="rounded"></a></div>
+                            <div><a rel="noopener noreferrer nofollow" href="#"><img src="./img/pintrest.png"
+                                        alt="chart success" class="rounded"></a></div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-lg-2 col-xl-2 service-groups">
+                        <h6 class="text-uppercase fw-bold mb-4">SERVICE</h6>
+                        <p>Single Registration</p>
+                        <p>Create Auction</p>
+                        <p>Player Watchlists</p>
+                        <p>Player Performance Analytics</p>
+                        <p>Quick Tournament</p>
+                        <p>Mobile Bidding System</p>
+                    </div>
+                    <div class="col-md-2 col-lg-2 col-xl-2 links-groups">
+                        <h6 class="text-uppercase fw-bold mb-4">Useful links</h6>
+                        <p><a href="#">About Us</a></p>
+                        <p><a href="#">Contact Us</a></p>
+                        <p><a href="#">Refund Policy</a></p>
+                        <p><a href="#">Privacy Center</a></p>
+                        <p><a href="#">Terms and Conditions</a></p>
+                        <p><a href="#">FAQs</a></p>
+                    </div>
+                    <div class="col-md-4 col-lg-3 col-xl-3 contact-groups">
+                        <h6 class="text-uppercase fw-bold mb-4 ">Contact</h6>
+                        <p>9/166, 16th Floor, Ghaziabad City, Ghaziabad, Ghaziabad, Uttar Pradesh, India,</p>
+                        <p><a href="mailto:support@weddinghost.in">support@weddinghost.in</a></p>
+                        <p><i class="bi bi-telephone-inbound me-2"></i><a href="tel:+911204544680">+91 120-4544680</a>
+                        </p>
+                        <p><a href="tel:+919821002429"><i class="bi bi-telephone-inbound me-2"></i>098210 02429</a></p>
+                        <p><a class="me-4" href="tel:+919821002430"><i class="bi bi-telephone-inbound me-2"></i>098210
+                                02430</a></p>
+                        <p><a href="mailto:support@weddinghost.in"><i class="bi bi-envelope me-2"></i>Mail Us</a></p>
+                    </div>
+                    <div class="col-md-3 col-lg-4 col-xl-3">
+                        <div class="d-flex d-md-none justify-content-between social-icons">
+                            <div><a rel="noopener noreferrer nofollow" href="#"><img src="./img/whatsapp.png"
+                                        alt="chart success" class="rounded"></a></div>
+                            <div><a rel="noopener noreferrer nofollow" href="#"><img src="./img/youtube.png"
+                                        alt="chart success" class="rounded"></a></div>
+                            <div><a rel="noopener noreferrer nofollow" href="#"><img src="./img/facebook.png"
+                                        alt="chart success" class="rounded"></a></div>
+                            <div><a rel="noopener noreferrer nofollow" href="#"><img src="./img/instagram.png"
+                                        alt="chart success" class="rounded"></a></div>
+                            <div><a rel="noopener noreferrer nofollow" href="#"><img src="./img/pintrest.png"
+                                        alt="chart success" class="rounded"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="copyrights">
+            <div class="copyrights-container">
+                <!-- <svg class="curve-svg" viewBox="0 0 1000 200" preserveAspectRatio="none">
+                    <path class="wave-path" d="M0,200 Q100,60 250,120 T500,80 T750,140 T1000,120 L1000,200 L0,200 Z">
+                    </path>
+                </svg> -->
+                <svg class="curve-svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                    <path class="wave-path" fill="#FF7A00" fill-opacity="1"
+                        d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+                    </path>
+                </svg>
+
+                <div class="copyrights-content">
+                    <h6>
+                        Copyright © 2025 Mapi Magical Pvt Ltd. All Rights Reserved.
+                    </h6>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get target element
+            const nav = document.getElementById('mainNav');
+            const box = document.getElementById('targetElement');
+
+            // Scroll event listener
+            window.addEventListener('scroll', () => {
+                const scrollPosition = window.scrollY;
+
+                // Example 1: Add class to navbar after 100px scroll
+                if (scrollPosition > 84) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
